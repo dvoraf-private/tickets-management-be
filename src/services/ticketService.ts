@@ -1,39 +1,11 @@
-const tickets = [
-    // Example tickets data
-    { id: 1, title: 'Event 1', description: 'Description 1', date: '2023-10-01', location: 'Location 1', userType: 'local' },
-    { id: 2, title: 'Event 2', description: 'Description 2', date: '2023-10-02', location: 'Location 2', userType: 'tourist' },
-    { id: 3, title: 'Event 1', description: 'Description 1', date: '2023-10-01', location: 'Location 1', userType: 'local' },
-    { id: 2, title: 'Event 2', description: 'Description 2', date: '2023-10-02', location: 'Location 2', userType: 'tourist' },
-    { id: 1, title: 'Event 1', description: 'Description 1', date: '2023-10-01', location: 'Location 1', userType: 'local' },
-    { id: 2, title: 'Event 2', description: 'Description 2', date: '2023-10-02', location: 'Location 2', userType: 'tourist' },
-    { id: 1, title: 'Event 1', description: 'Description 1', date: '2023-10-01', location: 'Location 1', userType: 'local' },
-    { id: 2, title: 'Event 2', description: 'Description 2', date: '2023-10-02', location: 'Location 2', userType: 'tourist' },
-    { id: 1, title: 'Event 1', description: 'Description 1', date: '2023-10-01', location: 'Location 1', userType: 'local' },
-    { id: 2, title: 'Event 2', description: 'Description 2', date: '2023-10-02', location: 'Location 2', userType: 'tourist' },
-    { id: 1, title: 'Event 1', description: 'Description 1', date: '2023-10-01', location: 'Location 1', userType: 'local' },
-    { id: 2, title: 'Event 2', description: 'Description 2', date: '2023-10-02', location: 'Location 2', userType: 'tourist' },
-    { id: 1, title: 'Event 1', description: 'Description 1', date: '2023-10-01', location: 'Location 1', userType: 'local' },
-    { id: 2, title: 'Event 2', description: 'Description 2', date: '2023-10-02', location: 'Location 2', userType: 'tourist' },
-    { id: 1, title: 'Event 1', description: 'Description 1', date: '2023-10-01', location: 'Location 1', userType: 'local' },
-    { id: 2, title: 'Event 2', description: 'Description 2', date: '2023-10-02', location: 'Location 2', userType: 'tourist' },
-    { id: 1, title: 'Event 1', description: 'Description 1', date: '2023-10-01', location: 'Location 1', userType: 'local' },
-    { id: 2, title: 'Event 2', description: 'Description 2', date: '2023-10-02', location: 'Location 2', userType: 'tourist' },
-    { id: 1, title: 'Event 1', description: 'Description 1', date: '2023-10-01', location: 'Location 1', userType: 'local' },
-    { id: 2, title: 'Event 2', description: 'Description 2', date: '2023-10-02', location: 'Location 2', userType: 'tourist' },
-    { id: 1, title: 'Event 1', description: 'Description 1', date: '2023-10-01', location: 'Location 1', userType: 'local' },
-    { id: 2, title: 'Event 2', description: 'Description 2', date: '2023-10-02', location: 'Location 2', userType: 'tourist' },
-    { id: 1, title: 'Event 1', description: 'Description 1', date: '2023-10-01', location: 'Location 1', userType: 'local' },
-    { id: 2, title: 'Event 2', description: 'Description 2', date: '2023-10-02', location: 'Location 2', userType: 'tourist' },
-    { id: 1, title: 'Event 1', description: 'Description 1', date: '2023-10-01', location: 'Location 1', userType: 'local' },
-    { id: 2, title: 'Event 2', description: 'Description 2', date: '2023-10-02', location: 'Location 2', userType: 'tourist' },
-    // ... add more tickets as needed
-];
+import tickets from "../templates/ticketsData";
 
-const getTickets = (page: any, limit: any ) => {
+const getTickets = (userType: string, page: number, limit: number ) => {
     const startIndex = (page - 1) * limit;
     const endIndex = page * limit;
 
-    const data = tickets.slice(startIndex, endIndex);
+    const filteredTickets = tickets.filter(ticket => ticket.userType === userType);
+    const data = filteredTickets.slice(startIndex, endIndex);
     return data
 
 }

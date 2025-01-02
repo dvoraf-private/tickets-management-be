@@ -12,14 +12,11 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 app.get('/tickets', (req, res) => {
-    console.log('----get tickets')
-    // @ts-ignore
-    const page = parseInt(req.query?.page) || 1;
-    // @ts-ignore
-    const limit = parseInt(req.query?.limit) || 10;
+    const userType = req.query?.userType;
+    const page = parseInt(req.query?.page as string) || 1;
+    const limit = parseInt(req.query?.limit as string) || 10;
 
-    const ticketsData = getTickets(page, limit);
-    console.log('----get tickets')
+    const ticketsData = getTickets(userType as string, page, limit);
 
     res.json({
         totalTickets: ticketsData.length,
